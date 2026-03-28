@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
+  const [videoPlaying, setVideoPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -17,9 +18,11 @@ export default function Hero() {
     const video = videoRef.current;
     if (!video) return;
 
+    const onPlaying = () => setVideoPlaying(true);
+    video.addEventListener("playing", onPlaying);
+
     const tryPlay = () => {
       video.play().catch(() => {
-        // If autoplay fails, try again on first user interaction
         const playOnInteraction = () => {
           video.play().catch(() => {});
           document.removeEventListener("touchstart", playOnInteraction);
@@ -36,6 +39,7 @@ export default function Hero() {
 
     return () => {
       video.removeEventListener("loadeddata", tryPlay);
+      video.removeEventListener("playing", onPlaying);
     };
   }, []);
 
@@ -49,12 +53,14 @@ export default function Hero() {
         className="absolute inset-0 z-0"
         style={{ transform: `translateY(${scrollY * 0.3}px)` }}
       >
-        {/* Fallback image for mobile (shows beneath video) */}
-        <img
-          src="/images/hero-poster.jpg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-        />
+        {/* Fallback image — hidden once video starts */}
+        {!videoPlaying && (
+          <img
+            src="/images/hero-poster.jpg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover opacity-30"
+          />
+        )}
         <video
           ref={videoRef}
           autoPlay
