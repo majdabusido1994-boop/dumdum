@@ -1,14 +1,42 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Force play on mobile — some browsers need a manual .play() call
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const tryPlay = () => {
+      video.play().catch(() => {
+        // If autoplay fails, try again on first user interaction
+        const playOnInteraction = () => {
+          video.play().catch(() => {});
+          document.removeEventListener("touchstart", playOnInteraction);
+          document.removeEventListener("click", playOnInteraction);
+        };
+        document.addEventListener("touchstart", playOnInteraction, { once: true });
+        document.addEventListener("click", playOnInteraction, { once: true });
+      });
+    };
+
+    // Try immediately and also after load
+    tryPlay();
+    video.addEventListener("loadeddata", tryPlay);
+
+    return () => {
+      video.removeEventListener("loadeddata", tryPlay);
+    };
   }, []);
 
   return (
@@ -21,12 +49,20 @@ export default function Hero() {
         className="absolute inset-0 z-0"
         style={{ transform: `translateY(${scrollY * 0.3}px)` }}
       >
+        {/* Fallback image for mobile (shows beneath video) */}
+        <img
+          src="/images/hero-poster.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+        />
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-[120%] object-cover opacity-30"
+          preload="auto"
+          className="absolute inset-0 w-full h-[120%] object-cover opacity-30"
           poster="/images/hero-poster.jpg"
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
