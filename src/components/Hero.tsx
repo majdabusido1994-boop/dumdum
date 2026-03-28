@@ -1,17 +1,32 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 export default function Hero() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
+      {/* Video Background with Parallax */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+      >
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-[120%] object-cover opacity-30"
           poster="/images/hero-poster.jpg"
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
@@ -27,14 +42,17 @@ export default function Hero() {
           </p>
         </div>
 
-        <h1
-          className="font-display text-[clamp(4rem,15vw,12rem)] leading-[0.85] tracking-wider animate-slide-up"
-        >
+        <h1 className="font-display text-[clamp(4rem,15vw,12rem)] leading-[0.85] tracking-wider animate-slide-up">
           <span className="text-gradient">DUM</span>
           <span className="text-[#f0ede8]">DUM</span>
         </h1>
 
-        <p className="mt-6 text-lg md:text-xl text-[#f0ede8]/60 max-w-md mx-auto animate-fade-in">
+        {/* Arabic accent */}
+        <p className="mt-2 text-2xl text-[#f0ede8]/20 font-light tracking-widest animate-fade-in">
+          دمدم
+        </p>
+
+        <p className="mt-4 text-lg md:text-xl text-[#f0ede8]/60 max-w-md mx-auto animate-fade-in">
           From the underground, for the underground.
         </p>
 

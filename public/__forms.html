@@ -1,0 +1,25 @@
+<!--
+  Hidden page for Netlify Forms detection.
+  Netlify scans static HTML at deploy time to register form names.
+-->
+<html>
+<head><title>Forms</title></head>
+<body>
+  <form name="booking" netlify netlify-honeypot="bot-field" hidden>
+    <input name="form-name" type="hidden" value="booking" />
+    <input name="bot-field" />
+    <input name="name" />
+    <input name="email" />
+    <input name="event-type" />
+    <input name="event-date" />
+    <input name="venue" />
+    <textarea name="message"></textarea>
+  </form>
+
+  <form name="newsletter" netlify netlify-honeypot="bot-field" hidden>
+    <input name="form-name" type="hidden" value="newsletter" />
+    <input name="bot-field" />
+    <input name="email" />
+  </form>
+</body>
+</html>

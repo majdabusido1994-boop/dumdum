@@ -112,3 +112,33 @@ body {
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
+
+/* Date input dark mode fix */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+input[type="date"] {
+  color-scheme: dark;
+}
+
+/* Select arrow dark mode */
+select {
+  color-scheme: dark;
+}
+
+/* Hide default cursor on desktop for custom cursor */
+@media (hover: hover) {
+  .cursor-none,
+  .cursor-none * {
+    cursor: none !important;
+  }
+}
+
+@media (hover: none) {
+  .cursor-none,
+  .cursor-none * {
+    cursor: auto !important;
+  }
+}
