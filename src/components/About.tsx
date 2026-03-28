@@ -5,11 +5,11 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Image */}
           <div className="relative">
-            <div className="aspect-[3/4] bg-[#1a1a1a] overflow-hidden">
+            <div className="aspect-[4/5] bg-[#1a1a1a] overflow-hidden">
               <img
                 src="/images/about.jpg"
-                alt="DUMDUM"
-                className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500"
+                alt="DUMDUM mixing under red neon lights"
+                className="w-full h-full object-cover object-center opacity-80 hover:opacity-100 transition-opacity duration-500"
               />
             </div>
             <div className="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-[#e8722a] opacity-30" />
