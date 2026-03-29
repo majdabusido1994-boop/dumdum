@@ -5,13 +5,13 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function Timeline() {
   return (
-    <section id="timeline" className="py-24 px-6 bg-[#111]">
+    <section id="timeline" className="py-24 px-6 bg-[#080808]">
       <div className="max-w-4xl mx-auto">
         <ScrollReveal>
           <p className="text-sm uppercase tracking-[0.3em] text-[#e8722a] mb-4 text-center">
             The Journey &mdash; الرحلة
           </p>
-          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-16 text-center">
+          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-16 text-center section-heading">
             TIMELINE
           </h2>
         </ScrollReveal>

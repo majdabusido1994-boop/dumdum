@@ -41,7 +41,7 @@ export default function Music() {
           <p className="text-sm uppercase tracking-[0.3em] text-[#e8722a] mb-4">
             Listen &mdash; استمع
           </p>
-          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-12">
+          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-12 section-heading">
             MIXES & MUSIC
           </h2>
         </ScrollReveal>

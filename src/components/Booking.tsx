@@ -24,13 +24,13 @@ export default function Booking() {
   };
 
   return (
-    <section id="booking" className="py-24 px-6 bg-[#111]">
+    <section id="booking" className="py-24 px-6 bg-[#080808]">
       <div className="max-w-3xl mx-auto">
         <ScrollReveal>
           <p className="text-sm uppercase tracking-[0.3em] text-[#e8722a] mb-4 text-center">
             Let&apos;s Work &mdash; احجزيني
           </p>
-          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-4 text-center">
+          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-4 text-center section-heading">
             BOOK DUMDUM
           </h2>
           <p className="text-center text-[#f0ede8]/50 mb-12 max-w-lg mx-auto">
@@ -77,7 +77,7 @@ export default function Booking() {
                     type="text"
                     name="name"
                     required
-                    className="w-full bg-[#0a0a0a] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors"
+                    className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors"
                     placeholder="Name"
                   />
                 </div>
@@ -89,7 +89,7 @@ export default function Booking() {
                     type="email"
                     name="email"
                     required
-                    className="w-full bg-[#0a0a0a] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors"
+                    className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors"
                     placeholder="email@example.com"
                   />
                 </div>
@@ -104,7 +104,7 @@ export default function Booking() {
                     name="event-type"
                     required
                     title="Event Type"
-                    className="w-full bg-[#0a0a0a] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors appearance-none"
+                    className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors appearance-none"
                   >
                     <option value="">Select type</option>
                     <option value="club">Club Night</option>
@@ -125,7 +125,7 @@ export default function Booking() {
                     required
                     title="Event Date"
                     placeholder="Select date"
-                    className="w-full bg-[#0a0a0a] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors date-input"
+                    className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors date-input"
                   />
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default function Booking() {
                 <input
                   type="text"
                   name="venue"
-                  className="w-full bg-[#0a0a0a] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors"
+                  className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors"
                   placeholder="Venue name and city"
                 />
               </div>
@@ -150,14 +150,14 @@ export default function Booking() {
                   name="message"
                   required
                   rows={5}
-                  className="w-full bg-[#0a0a0a] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors resize-none"
+                  className="w-full bg-[#050505] border border-white/10 px-4 py-3 text-[#f0ede8] focus:border-[#e8722a] focus:outline-none transition-colors resize-none"
                   placeholder="Tell me about your event — vibe, expected crowd, budget, etc."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-4 bg-[#e8722a] text-[#0a0a0a] font-bold uppercase tracking-wider text-sm hover:bg-[#f0ede8] transition-colors"
+                className="btn-neon w-full py-4 bg-[#e8722a] text-[#050505] font-bold uppercase tracking-wider text-sm hover:bg-[#f0ede8] transition-all"
               >
                 Send Booking Request
               </button>

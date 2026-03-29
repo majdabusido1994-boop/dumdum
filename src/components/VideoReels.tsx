@@ -71,7 +71,7 @@ function PlayableVideo() {
 
 export default function VideoReels() {
   return (
-    <section className="py-24 px-6 bg-[#111]">
+    <section className="py-24 px-6 bg-[#080808]">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
           <p className="text-sm uppercase tracking-[0.3em] text-[#e8722a] mb-4">

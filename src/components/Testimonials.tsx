@@ -34,7 +34,7 @@ export default function Testimonials() {
           <p className="text-sm uppercase tracking-[0.3em] text-[#e8722a] mb-4 text-center">
             What They Say
           </p>
-          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-16 text-center">
+          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-16 text-center section-heading">
             PRESS & REVIEWS
           </h2>
         </ScrollReveal>
@@ -42,7 +42,7 @@ export default function Testimonials() {
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((t, i) => (
             <ScrollReveal key={t.name} delay={i * 0.15}>
-              <div className="relative p-8 border border-white/5 bg-[#0a0a0a]/50 backdrop-blur-sm hover:border-[#7b2fbe]/30 transition-colors h-full flex flex-col">
+              <div className="relative p-8 border border-white/5 bg-[#050505]/50 backdrop-blur-sm hover:border-[#7b2fbe]/30 hover:shadow-[0_0_25px_rgba(123,47,190,0.08)] transition-colors h-full flex flex-col">
                 {/* Quote mark */}
                 <span className="font-display text-6xl text-[#e8722a]/20 leading-none absolute top-4 left-6">
                   &ldquo;

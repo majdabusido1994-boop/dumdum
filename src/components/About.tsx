@@ -32,7 +32,7 @@ export default function About() {
               <p className="text-sm uppercase tracking-[0.3em] text-[#e8722a] mb-4">
                 About
               </p>
-              <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-2">
+              <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-2 section-heading">
                 DUMDUM
               </h2>
               <p className="text-lg text-[#f0ede8]/15 mb-8">دمدم — عمّان، الأردن</p>

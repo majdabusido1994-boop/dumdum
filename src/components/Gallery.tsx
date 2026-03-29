@@ -61,7 +61,7 @@ export default function Gallery() {
           <p className="text-sm uppercase tracking-[0.3em] text-[#e8722a] mb-4">
             Visuals &mdash; صور
           </p>
-          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-4">
+          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-4 section-heading">
             GALLERY
           </h2>
           <p className="text-[#f0ede8]/40 mb-12 max-w-lg">

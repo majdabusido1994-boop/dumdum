@@ -20,13 +20,13 @@ export default function Events() {
   };
 
   return (
-    <section id="events" className="py-24 px-6 bg-[#111]">
+    <section id="events" className="py-24 px-6 bg-[#080808]">
       <div className="max-w-4xl mx-auto">
         <ScrollReveal>
           <p className="text-sm uppercase tracking-[0.3em] text-[#e8722a] mb-4">
             Catch Me Live
           </p>
-          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-12">
+          <h2 className="font-display text-5xl md:text-7xl tracking-wider mb-12 section-heading">
             UPCOMING SHOWS
           </h2>
         </ScrollReveal>
@@ -37,7 +37,7 @@ export default function Events() {
             const d = formatDate(event.date);
             return (
               <ScrollReveal key={event.id} delay={i * 0.1}>
-                <div className="flex items-center gap-6 p-6 bg-[#0a0a0a] border border-white/5 hover:border-[#e8722a]/30 transition-colors group">
+                <div className="flex items-center gap-6 p-6 bg-[#050505] border border-white/5 hover:border-[#e8722a]/30 hover:shadow-[0_0_20px_rgba(232,114,42,0.08)] transition-all group">
                   <div className="text-center min-w-[70px]">
                     <p className="font-display text-3xl text-[#e8722a]">
                       {d.day}

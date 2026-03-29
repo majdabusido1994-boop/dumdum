@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════
+   DUMDUM — Design System (UI UX Pro Max)
+   Style: Chromatic Aberration + OLED Dark + Neon Glow
+   Typography: Bebas Neue (display) + Source Sans 3 (body)
+   ═══════════════════════════════════════════════════ */
+
 @font-face {
   font-family: "Bebas Neue";
   src: url("https://fonts.gstatic.com/s/bebasneue/v14/JTUSjIg69CK48gW7PXoo9Wlhyw.woff2")
@@ -9,14 +15,30 @@
   font-display: swap;
 }
 
+/* ── Design Tokens ─────────────────────────────── */
 :root {
-  --color-black: #0a0a0a;
+  --color-black: #050505;
+  --color-dark: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-2: #1a1a1a;
   --color-offwhite: #f0ede8;
   --color-amber: #e8722a;
   --color-violet: #7b2fbe;
   --color-gold: #c9a84c;
+  --color-indigo: #1e1b4b;
+  --color-deep-violet: #312e81;
+
+  /* Glow intensities */
+  --glow-sm: 0 0 10px;
+  --glow-md: 0 0 20px;
+  --glow-lg: 0 0 40px;
+  --glow-xl: 0 0 60px;
+
+  /* RGB Glitch offsets */
+  --glitch-offset: 2px;
 }
 
+/* ── Reset & Base ──────────────────────────────── */
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +52,7 @@ html {
 body {
   background: var(--color-black);
   color: var(--color-offwhite);
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Source Sans 3", "Inter", system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
 
@@ -44,7 +66,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #111;
+  background: var(--color-black);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -52,10 +74,12 @@ body {
   border-radius: 3px;
 }
 
+/* ── Typography ────────────────────────────────── */
 .font-display {
   font-family: "Bebas Neue", "Arial Narrow", sans-serif;
 }
 
+/* ── Gradients ─────────────────────────────────── */
 .text-gradient {
   background: linear-gradient(135deg, var(--color-amber), var(--color-violet));
   -webkit-background-clip: text;
@@ -63,14 +87,207 @@ body {
   background-clip: text;
 }
 
+/* ── Neon Glow Effects ─────────────────────────── */
 .glow-amber {
-  box-shadow: 0 0 30px rgba(232, 114, 42, 0.3);
+  box-shadow: var(--glow-md) rgba(232, 114, 42, 0.3),
+    var(--glow-lg) rgba(232, 114, 42, 0.1);
 }
 
 .glow-violet {
-  box-shadow: 0 0 30px rgba(123, 47, 190, 0.3);
+  box-shadow: var(--glow-md) rgba(123, 47, 190, 0.3),
+    var(--glow-lg) rgba(123, 47, 190, 0.1);
 }
 
+.text-glow-amber {
+  text-shadow: var(--glow-sm) rgba(232, 114, 42, 0.6),
+    var(--glow-md) rgba(232, 114, 42, 0.3);
+}
+
+.text-glow-violet {
+  text-shadow: var(--glow-sm) rgba(123, 47, 190, 0.6),
+    var(--glow-md) rgba(123, 47, 190, 0.3);
+}
+
+/* ── RGB Chromatic Aberration / Glitch ─────────── */
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-black);
+  overflow: hidden;
+  clip-path: inset(0);
+}
+
+.glitch::before {
+  left: var(--glitch-offset);
+  text-shadow: calc(var(--glitch-offset) * -1) 0 rgba(232, 114, 42, 0.7);
+  animation: glitch-1 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: calc(var(--glitch-offset) * -1);
+  text-shadow: var(--glitch-offset) 0 rgba(123, 47, 190, 0.7);
+  animation: glitch-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-1 {
+  0%,
+  90%,
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+  92% {
+    clip-path: inset(20% 0 50% 0);
+  }
+  94% {
+    clip-path: inset(60% 0 10% 0);
+  }
+  96% {
+    clip-path: inset(40% 0 30% 0);
+  }
+  98% {
+    clip-path: inset(80% 0 5% 0);
+  }
+}
+
+@keyframes glitch-2 {
+  0%,
+  90%,
+  100% {
+    clip-path: inset(100% 0 0 0);
+  }
+  91% {
+    clip-path: inset(30% 0 40% 0);
+  }
+  93% {
+    clip-path: inset(70% 0 10% 0);
+  }
+  95% {
+    clip-path: inset(10% 0 60% 0);
+  }
+  97% {
+    clip-path: inset(50% 0 20% 0);
+  }
+}
+
+/* ── Scanline Overlay ──────────────────────────── */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Noise / Grain Texture ─────────────────────── */
+.noise::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.4;
+}
+
+/* ── Aurora / Gradient Mesh ────────────────────── */
+.aurora {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(30, 27, 75, 0) 0deg,
+    rgba(232, 114, 42, 0.08) 60deg,
+    rgba(123, 47, 190, 0.06) 120deg,
+    rgba(30, 27, 75, 0) 180deg,
+    rgba(201, 168, 76, 0.05) 240deg,
+    rgba(232, 114, 42, 0.04) 300deg,
+    rgba(30, 27, 75, 0) 360deg
+  );
+  animation: aurora-rotate 20s linear infinite;
+}
+
+@keyframes aurora-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Neon CTA Button ───────────────────────────── */
+.btn-neon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-neon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-neon:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-neon:hover {
+  box-shadow: var(--glow-md) rgba(232, 114, 42, 0.4),
+    var(--glow-lg) rgba(232, 114, 42, 0.15);
+  transform: translateY(-1px);
+}
+
+.btn-neon-outline:hover {
+  box-shadow: var(--glow-md) rgba(123, 47, 190, 0.3),
+    var(--glow-lg) rgba(123, 47, 190, 0.1);
+  transform: translateY(-1px);
+}
+
+/* ── Section Heading Glow ──────────────────────── */
+.section-heading {
+  text-shadow: 0 0 80px rgba(232, 114, 42, 0.15);
+}
+
+/* ── Animations ────────────────────────────────── */
 @keyframes pulse-glow {
   0%,
   100% {
@@ -113,7 +330,28 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Date input dark mode fix */
+/* ── Prefers Reduced Motion (UX Guideline) ─────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
+
+  .aurora::before {
+    animation: none;
+  }
+}
+
+/* ── Form Controls (Dark Mode Fix) ─────────────── */
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
   cursor: pointer;
@@ -123,12 +361,11 @@ input[type="date"] {
   color-scheme: dark;
 }
 
-/* Select arrow dark mode */
 select {
   color-scheme: dark;
 }
 
-/* Hide default cursor on desktop for custom cursor */
+/* ── Custom Cursor (Desktop Only) ──────────────── */
 @media (hover: hover) {
   .cursor-none,
   .cursor-none * {
